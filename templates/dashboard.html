@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Security Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- HEADER -->
+
+    <h1>🔐 Security Dashboard</h1>
+
+    <p class="subtitle">
+        Custom Payload Encoder & Obfuscation Framework
+    </p>
+
+
+    <!-- STAT CARDS -->
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h3>Total Operations</h3>
+
+            <p>
+                {{ total_operations }}
+            </p>
+        </div>
+
+
+        <div class="dashboard-card">
+            <h3>Encode Operations</h3>
+
+            <p>
+                {{ encode_count }}
+            </p>
+        </div>
+
+
+        <div class="dashboard-card">
+            <h3>Decode Operations</h3>
+
+            <p>
+                {{ decode_count }}
+            </p>
+        </div>
+
+
+        <div class="dashboard-card">
+            <h3>Methods Used</h3>
+
+            <p>
+                {{ method_counts|length }}
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- METHODS -->
+
+    <div class="recent-section">
+
+        <h2>Encoding Methods</h2>
+
+        {% if method_counts %}
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                {% for method, count in method_counts.items() %}
+
+                    <tr>
+
+                        <td>
+                            {{ method }}
+                        </td>
+
+                        <td>
+                            {{ count }}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        {% else %}
+
+            <p>No operations recorded yet.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- RECENT OPERATIONS -->
+
+    <div class="recent-section"
+         style="margin-top: 25px;">
+
+        <h2>Recent Operations</h2>
+
+        {% if recent_records %}
+
+            <div class="table-wrapper">
+
+                <table class="history-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Operation</th>
+                            <th>Method</th>
+                            <th>Input Length</th>
+                            <th>Output Length</th>
+                            <th>Date & Time</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for item in recent_records %}
+
+                        <tr>
+
+                            <td>
+                                {{ item.operation|capitalize }}
+                            </td>
+
+                            <td>
+                                {{ item.method|upper }}
+                            </td>
+
+                            <td>
+                                {{ item.input_length }}
+                            </td>
+
+                            <td>
+                                {{ item.output_length }}
+                            </td>
+
+                            <td>
+                                {{ item.timestamp }}
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {% else %}
+
+            <p>No operations recorded yet.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="button-group"
+         style="margin-top: 25px;">
+
+        <a href="/"
+           class="back-button">
+
+            ← Encoder
+
+        </a>
+
+
+        <a href="/history"
+           class="history-button">
+
+            📜 Operation History
+
+        </a>
+
+    </div>
+
+    <div class="page-navigation">
+
+    <a href="/" class="nav-button encoder-btn">
+        🔐 Encoder
+    </a>
+
+    <a href="/history" class="nav-button history-btn">
+        📜 Operation History
+    </a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

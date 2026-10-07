@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Operation History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="history-container">
+
+    <!-- HEADER -->
+
+    <h1>📜 Operation History</h1>
+
+    <p class="subtitle">
+        Previous encoding and transformation operations
+    </p>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-container">
+
+        <input
+            type="text"
+            id="historySearch"
+            placeholder="Search operations..."
+            onkeyup="searchHistory()">
+
+    </div>
+
+
+    <!-- HISTORY TABLE -->
+
+    {% if history %}
+
+    <div class="table-wrapper">
+
+        <table class="history-table"
+               id="historyTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Operation</th>
+
+                    <th>Method</th>
+
+                    <th>Input Length</th>
+
+                    <th>Output Length</th>
+
+                    <th>Date & Time</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+            {% for item in history %}
+
+                <tr>
+
+                    <td>
+                        {{ item.operation|capitalize }}
+                    </td>
+
+
+                    <td>
+                        {{ item.method|upper }}
+                    </td>
+
+
+                    <td>
+                        {{ item.input_length }}
+                    </td>
+
+
+                    <td>
+                        {{ item.output_length }}
+                    </td>
+
+
+                    <td>
+                        {{ item.timestamp }}
+                    </td>
+
+
+                    <td>
+
+                        <a
+                            href="{{ url_for('delete_history',
+                                             index=loop.index0) }}"
+                            class="delete-button"
+                            onclick="return confirm('Delete this record?');">
+
+                            Delete
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+        <div class="section">
+
+            <h2>No History Available</h2>
+
+            <p>
+                No encoding or decoding operations have been recorded yet.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- ACTIONS -->
+
+    <div class="history-actions">
+
+        <a href="/"
+           class="back-button">
+
+            ← Back to Encoder
+
+        </a>
+
+
+        <a href="/dashboard"
+           class="history-button">
+
+            📊 Dashboard
+
+        </a>
+
+
+        {% if history %}
+
+        <form
+            action="{{ url_for('clear_history') }}"
+            method="POST"
+            style="display:inline;">
+
+            <button
+                type="submit"
+                class="clear-history-button"
+                onclick="return confirm('Clear all history?');">
+
+                🗑 Clear History
+
+            </button>
+
+        </form>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+<!-- SEARCH SCRIPT -->
+
+<script>
+
+function searchHistory() {
+
+    const input =
+        document.getElementById("historySearch");
+
+    const filter =
+        input.value.toLowerCase();
+
+    const table =
+        document.getElementById("historyTable");
+
+    if (!table) {
+        return;
+    }
+
+    const rows =
+        table.getElementsByTagName("tbody")[0]
+             .getElementsByTagName("tr");
+
+
+    for (let i = 0; i < rows.length; i++) {
+
+        const text =
+            rows[i].innerText.toLowerCase();
+
+        if (text.includes(filter)) {
+
+            rows[i].style.display = "";
+
+        } else {
+
+            rows[i].style.display = "none";
+
+        }
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>

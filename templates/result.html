@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Processing Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>🔐 Processing Result</h1>
+
+        <p>
+            Transformation completed successfully
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Operation Details</h2>
+
+        <p>
+            <strong>Operation:</strong>
+            {{ operation }}
+        </p>
+
+        <br>
+
+        <p>
+            <strong>Method:</strong>
+            {{ method }}
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Result</h2>
+
+        <div class="result-box">
+
+            <textarea
+                rows="10"
+                readonly>{{ result }}</textarea>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>SHA-256 Verification</h2>
+
+        <p>
+            <strong>Input Hash</strong>
+        </p>
+
+        <br>
+
+        <div class="result-box hash">
+
+            {{ input_hash }}
+
+        </div>
+
+        <br>
+
+        <p>
+            <strong>Output Hash</strong>
+        </p>
+
+        <br>
+
+        <div class="result-box hash">
+
+            {{ output_hash }}
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="/"
+        class="back-link">
+
+        ← Back to Encoder
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

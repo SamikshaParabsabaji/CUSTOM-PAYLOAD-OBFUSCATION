@@ -1,0 +1,86 @@
+[
+    {
+        "operation": "encode",
+        "method": "xor",
+        "input_length": 20,
+        "output_length": 40,
+        "timestamp": "01-10-2026 19:37:41"
+    },
+    {
+        "operation": "encode",
+        "method": "rot13",
+        "input_length": 20,
+        "output_length": 20,
+        "timestamp": "01-10-2026 19:36:47"
+    },
+    {
+        "operation": "encode",
+        "method": "hex",
+        "input_length": 20,
+        "output_length": 40,
+        "timestamp": "01-10-2026 19:36:09"
+    },
+    {
+        "operation": "decode",
+        "method": "multi",
+        "input_length": 56,
+        "output_length": 20,
+        "timestamp": "01-10-2026 19:33:06"
+    },
+    {
+        "operation": "encode",
+        "method": "multi",
+        "input_length": 20,
+        "output_length": 56,
+        "timestamp": "01-10-2026 19:32:26"
+    },
+    {
+        "operation": "encode",
+        "method": "base64",
+        "input_length": 20,
+        "output_length": 28,
+        "timestamp": "01-10-2026 19:31:56"
+    },
+    {
+        "operation": "Decode",
+        "method": "MULTI",
+        "input_length": 32,
+        "output_length": 22,
+        "timestamp": "01-10-2026 19:15:37"
+    },
+    {
+        "operation": "Encode",
+        "method": "MULTI",
+        "input_length": 22,
+        "output_length": 32,
+        "timestamp": "01-10-2026 19:14:59"
+    },
+    {
+        "operation": "Encode",
+        "method": "BASE64",
+        "input_length": 20,
+        "output_length": 28,
+        "timestamp": "30-09-2026 22:11:01"
+    },
+    {
+        "operation": "Encode",
+        "method": "BASE64",
+        "input_length": 20,
+        "output_length": 28,
+        "timestamp": "30-09-2026 22:10:56"
+    },
+    {
+        "operation": "Encode",
+        "method": "BASE64",
+        "input_length": 20,
+        "output_length": 28,
+        "timestamp": "30-09-2026 21:59:15"
+    },
+    {
+        "operation": "Encode",
+        "method": "Base64",
+        "input_length": 20,
+        "output_length": 28,
+        "timestamp": "29-09-2026 17:26:30"
+    }
+]

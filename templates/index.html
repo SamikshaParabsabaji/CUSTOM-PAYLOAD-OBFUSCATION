@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cybersecurity Encoder</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>🔐 Custom Payload Encoder</h1>
+
+        <p>
+            Educational Encoding & Obfuscation Framework
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Data Transformation</h2>
+
+        {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <form method="POST">
+
+            <div class="form-group">
+
+                <label for="data">
+                    Input Text
+                </label>
+
+                <div class="page-navigation">
+
+    <a href="/dashboard" class="nav-button dashboard-btn">
+        📊 Dashboard
+    </a>
+
+    <a href="/history" class="nav-button history-btn">
+        📜 Operation History
+    </a>
+
+</div>
+
+                <textarea
+                    id="data"
+                    name="data"
+                    rows="10"
+                    placeholder="Enter harmless text or test data..."
+                    required></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="method">
+                    Encoding Method
+                </label>
+
+                <select
+                    id="method"
+                    name="method">
+
+                    <option value="base64">
+                        Base64
+                    </option>
+
+                    <option value="hex">
+                        Hexadecimal
+                    </option>
+
+                    <option value="rot13">
+                        ROT13
+                    </option>
+
+                    <option value="xor">
+                        XOR
+                    </option>
+
+                    <option value="custom">
+                        Custom Substitution
+                    </option>
+
+                    <option value="multi">
+                        Multi-Layer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="operation">
+                    Operation
+                </label>
+
+                <select
+                    id="operation"
+                    name="operation">
+
+                    <option value="encode">
+                        Encode
+                    </option>
+
+                    <option value="decode">
+                        Decode
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="key">
+                    XOR Key
+                </label>
+
+                <input
+                    type="text"
+                    id="key"
+                    name="key"
+                    placeholder="Required only for XOR">
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="button">
+
+                Process Data
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Supported Methods</h2>
+
+        <p class="info">
+            Base64 • Hexadecimal • ROT13 • XOR •
+            Custom Substitution • Multi-Layer
+        </p>
+
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">
+
+    <a
+        href="/history"
+        class="button"
+        style="text-decoration:none;">
+
+        📜 View History
+
+    </a>
+
+    <a
+    href="/dashboard"
+    class="button"
+    style="
+        text-decoration:none;
+        margin-left:10px;
+    ">
+
+    🛡️ Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
